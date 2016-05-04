@@ -1,6 +1,0 @@
-remaining items
-
-
-2.make sure x icon is removed when search input is empty
-3.complete full pagination
-4.control config passed by user and show functionalities based on that
