@@ -1,0 +1,9 @@
+<section class="posRelative">
+    <input type="text" class="search"  placeholder="{{header | tgDataUpperCase}}"
+    ng-model="tgTableInputFilter.searchData[header]" ng-change="tgTableInputFilter.searchGridData()"/>
+
+    <span class="glyphicon glyphicon-remove cursor-pointer posAbs search-close-icon"
+    ng-click="tgTableInputFilter.clearSearchData()"
+     ng-if="tgTableInputFilter.searchData" aria-hidden="true"></span>
+
+</section>

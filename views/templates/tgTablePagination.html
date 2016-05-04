@@ -1,0 +1,24 @@
+<section class="col-sm-9">
+
+   <section class="col-sm-3">
+
+
+     <label for="">Page Size</label>
+
+      <select  name="" ng-model="tgTablePagination.paginationConfig.defaultPageSize"
+            ng-change="tgTablePagination.pageSizeChangeAction()" >
+          <option ng-repeat="pageSize in tgTablePagination.paginationConfig.pageSizes"
+            ng-disabled="tgTablePagination.checkDisabledState(pageSize,$last)">
+                {{pageSize}}
+            </option>
+        </select>
+
+
+
+</section>
+
+ <section class="col-sm-6">
+   <tg-table-page-number></tg-table-page-number>
+ </section>
+
+</section>

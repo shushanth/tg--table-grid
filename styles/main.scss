@@ -1,0 +1,233 @@
+$padding-all-zero:0;
+$zero:0;
+$padding-top-bottom-1per :1% 0 1% 0;
+$onepx-border:1px solid;
+$onepx-lighter-border:1px solid;
+$small-letter-spacing:0.03em;
+$none:none;
+$hidden:hidden;
+$scroll:scroll;
+$absolute:absolute;
+$relative:relative;
+$cursor-pointer:pointer;
+$defaultWidth:100%;
+$defaultRadius:5px;
+
+
+
+//colors variables
+$white:#fff;
+$lighter-white:#f3f3f3;
+$darker-white:#f4f4f4;
+
+//cell selection color;
+$cell-selection-default-color:#D1E6F1;
+
+
+
+//mixins
+@mixin setFontSize($fontSize) {
+  font-size: $fontSize;
+}
+@mixin setWidth($defaultWidth) {
+  width: $defaultWidth;
+}
+
+@mixin setBordeRadius($defaultRadius) {
+  border-radius: $defaultRadius;
+}
+
+@mixin onepxColorborder($color) {
+  border:$onepx-border $color;
+}
+
+@mixin marginTop($marginTop) {
+  margin-top: $marginTop;
+}
+@mixin right($right) {
+  right: $right;
+}
+@mixin left($left) {
+  left:$left;
+}
+@mixin top($top) {
+  top: $top;
+}
+@mixin bottom($bottom) {
+  bottom:$bottom;
+}
+
+@mixin backgroundColor($color){
+   background-color: $color;
+}
+
+@mixin cellSelectDefault() {
+  background-color: $cell-selection-default-color;
+}
+
+@mixin setColor($color) {
+  color:$color;
+}
+
+@mixin overflowY($y){
+  overflow-y: $y;
+}
+
+@mixin setWidth($width) {
+  width: $width;
+}
+
+@mixin setheight($height) {
+  height: $height;
+}
+
+@mixin setWidthHeight($width,$height) {
+  width: $width;
+  height:$height;
+}
+
+@mixin setZindex($zindex) {
+    z-index: $zindex;
+}
+
+
+body{
+  //common scss
+  font-family:'Merriweather Sans', sans-serif;
+  .posAbs {
+    position: $absolute;
+  }
+  .posRelative{
+    position: $relative;
+  }
+  .small-letter-space{
+    letter-spacing: $small-letter-spacing;
+  }
+  .padding-all-zero{
+    padding: $padding-all-zero;
+  }
+  .padding-top-bottom-zero {
+    padding-top: $zero;
+    padding-bottom:$zero;
+  }
+
+  .padding-right-left-zero{
+    padding-left:$zero;
+    padding-right:$zero;
+  }
+
+  .border-all1px{
+    @include onepxColorborder(#ccc);
+  }
+  .no-border-bottom{
+    border-bottom: $none;
+  }
+  .cursor-pointer{
+    cursor: $cursor-pointer;
+  }
+
+  .white-color-darker-class{
+    @include backgroundColor($darker-white);
+  }
+  .white-color-lighter-class{
+    @include backgroundColor($lighter-white);
+  }
+  .white-color-class{
+    @include backgroundColor($white);
+  }
+
+  .hidden-y-overflow-scroll{
+    @include overflowY($scroll);
+  }
+
+  .width-height-100{
+    @include setWidthHeight(100%,100%);
+  }
+
+  .z-index-100{
+    @include setZindex(100);
+  }
+
+  .left-0{
+    @include left(0);
+  }
+
+  .cell-select-default{
+    @include cellSelectDefault();
+  }
+
+  //main grid scss
+  .header-content{
+    padding: $padding-top-bottom-1per;
+    padding-left:2%;
+    border-right: $onepx-border #ccc;
+
+      .filter-section{
+        right: 5%;
+        font-size: 12px;
+        color: #777;
+        width: 100px;
+
+        .filter-sort-icon{
+          @include right(5%);
+        }
+
+        .filter-search-icon{
+          @include left(60%);
+        }
+
+      }
+
+      .search-filter-input-section{
+        @include marginTop(5%);
+
+        .search{
+            @include setWidth(90%);
+            @include onepxColorborder(#ccc);
+            @include setBordeRadius($defaultRadius);
+            outline: $none;
+            @include setFontSize(12px);
+            padding-left: 5%;
+            padding: 3%;
+            letter-spacing: 0.075em;
+        }
+        .search-close-icon{
+          @include top(35%);
+          @include left(80%);
+          @include setColor(#999);
+          @include setFontSize(10px);
+        }
+      }
+  }
+
+  .header-content:last-child{
+     border-right: $none;
+  }
+  .main-grid-body{
+    max-height: 300px;
+    .body-content{
+      border-bottom: none;
+      .body-text{
+        border-right: $onepx-border #ccc;
+        margin-bottom:$zero;
+        padding: $padding-top-bottom-1per;
+        padding-left:2%;
+      }
+      .body-text:last-child{
+        border-right: $none;
+      }
+    }
+  }
+
+
+  .footer-main{
+    padding: 1%;
+    border:1px solid #ccc;
+    border-top:none;
+    @include backgroundColor(#f4f4f4);
+
+    .footer-data-details{
+
+    }
+  }
+}

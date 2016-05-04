@@ -1,0 +1,8 @@
+<tg-main>
+	<table-header></table-header>
+	<table-body></table-body>
+	<table-footer></table-footer>
+
+</tg-main>
+
+ovrflow text functionality

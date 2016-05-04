@@ -1,0 +1,11 @@
+<section class="col-sm-12 col-md-12 col-xs-12 col-lg-12 main-grid-body panel-body padding-all-zero border-all1px hidden-y-overflow-scroll">
+
+  <section class="col-sm-12 col-md-12 col-xs-12 col-lg-12 body-content active"  tg-transclude-class tg-table-cell-select
+           ng-repeat="data in tgTableBody.tableData | limitTo:tgTableBody.dataLimit.pageSize | filter:tgTableBody.search | orderBy:tgTableBody.predicateDefault:tgTableBody.reverseDefault"
+           ng-class-even="'white-color-lighter-class'" ng-class-odd="'white-color-class'"
+          tg-table-cell-select>
+
+    <p class="text-capitalize text-muted body-text small-letter-space"  table-data-repeater="{{data}}">{{content}}</p>
+
+  </section>
+  </section>

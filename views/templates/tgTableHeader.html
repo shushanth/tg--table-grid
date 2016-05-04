@@ -1,0 +1,38 @@
+
+<section class="col-sm-12 col-md-12 col-xs-12 col-lg-12 no-border-bottom padding-top-bottom-zero border-all1px white-color-darker-class" tg-transclude-class>
+
+     <section class="header-content posRelative" ng-repeat="header in tgTableHeader.headers track by $index">
+
+       <!-- filter section starts -->
+       <section class="filter-section posAbs">
+              <span class="glyphicon glyphicon-menu-down cursor-pointer posAbs filter-sort-icon"
+              ng-click="tgTableHeader.sortGridData(header,true)"
+               ng-if="tgTableHeader.sortConfigDetails[header]" aria-hidden="true"></span>
+
+              <span class="glyphicon glyphicon-menu-up cursor-pointer posAbs filter-sort-icon"
+              ng-click="tgTableHeader.sortGridData(header,false)"
+               ng-if="!tgTableHeader.sortConfigDetails[header]" aria-hidden="true"></span>
+
+                <!-- <span class="glyphicon glyphicon-search cursor-pointer filter-search-icon"
+                      ng-click="tgTableHeader.searchConfigDetails[header] = !tgTableHeader.searchConfigDetails[header]"
+                      aria-hidden="true"></span> -->
+
+       </section>
+       <!-- filter section ends -->
+
+       <!-- data display section starts -->
+       <section class="data-content-section">
+         <p class="text-capitalize panel-title text-muted">{{::header}}</p>
+       </section>
+       <!-- data display section ends -->
+
+       <!-- filter section starts -->
+       <section class="search-filter-input-section" >
+         <tg-table-input-filter></tg-table-input-filter>
+       </section>
+       <!-- filter section ends -->
+
+
+     </section>
+
+</section>

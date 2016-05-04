@@ -1,0 +1,88 @@
+body {
+  font-family: 'Merriweather Sans', sans-serif; }
+  body .posAbs {
+    position: absolute; }
+  body .posRelative {
+    position: relative; }
+  body .small-letter-space {
+    letter-spacing: 0.03em; }
+  body .padding-all-zero {
+    padding: 0; }
+  body .padding-top-bottom-zero {
+    padding-top: 0;
+    padding-bottom: 0; }
+  body .padding-right-left-zero {
+    padding-left: 0;
+    padding-right: 0; }
+  body .border-all1px {
+    border: 1px solid #ccc; }
+  body .no-border-bottom {
+    border-bottom: none; }
+  body .cursor-pointer {
+    cursor: pointer; }
+  body .white-color-darker-class {
+    background-color: #f4f4f4; }
+  body .white-color-lighter-class {
+    background-color: #f3f3f3; }
+  body .white-color-class {
+    background-color: #fff; }
+  body .hidden-y-overflow-scroll {
+    overflow-y: scroll; }
+  body .width-height-100 {
+    width: 100%;
+    height: 100%; }
+  body .z-index-100 {
+    z-index: 100; }
+  body .left-0 {
+    left: 0; }
+  body .cell-select-default {
+    background-color: #D1E6F1; }
+  body .header-content {
+    padding: 1% 0 1% 0;
+    padding-left: 2%;
+    border-right: 1px solid #ccc; }
+    body .header-content .filter-section {
+      right: 5%;
+      font-size: 12px;
+      color: #777;
+      width: 100px; }
+      body .header-content .filter-section .filter-sort-icon {
+        right: 5%; }
+      body .header-content .filter-section .filter-search-icon {
+        left: 60%; }
+    body .header-content .search-filter-input-section {
+      margin-top: 5%; }
+      body .header-content .search-filter-input-section .search {
+        width: 90%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        font-size: 12px;
+        padding-left: 5%;
+        padding: 3%;
+        letter-spacing: 0.075em; }
+      body .header-content .search-filter-input-section .search-close-icon {
+        top: 35%;
+        left: 80%;
+        color: #999;
+        font-size: 10px; }
+  body .header-content:last-child {
+    border-right: none; }
+  body .main-grid-body {
+    max-height: 300px; }
+    body .main-grid-body .body-content {
+      border-bottom: none; }
+      body .main-grid-body .body-content .body-text {
+        border-right: 1px solid #ccc;
+        margin-bottom: 0;
+        padding: 1% 0 1% 0;
+        padding-left: 2%; }
+      body .main-grid-body .body-content .body-text:last-child {
+        border-right: none; }
+  body .footer-main {
+    padding: 1%;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: #f4f4f4; }
+
+/*# sourceMappingURL=main.css.map */

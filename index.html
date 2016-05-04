@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Table Grid's
+	</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:700,400|Cabin:400|Dosis" rel="stylesheet" type="text/css">
+	<link type="text/css" href="styles/main.css" rel="stylesheet">
+</head>
+<body ng-app="tableGrid">
+	<div ng-controller="tgController">
+
+		<!-- options  gets passed from the $scope , its a configuartion object based on it table grid will be build  -->
+		<div >
+
+			<tg-table-grid tg-table-grid="{{config}}"></tg-table-grid>
+
+		</div>
+
+
+
+
+	</div>
+
+
+	</body>
+
+   <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/controller.js"></script>
+		<script src="scripts/filters/tgDataUpperCaseFilter.js"></script>
+		<script src="scripts/directives/tgTableGrid.js"></script>
+		<script src="scripts/directives/tgTableHeader.js"></script>
+		<script src="scripts/directives/tgTableBody.js"></script>
+		<script src="scripts/directives/tgTableDataRepeater.js"></script>
+		<script src="scripts/directives/tgTrasncludeClass.js"></script>
+		<script src="scripts/directives/tgTableTitle.js"></script>
+		<script src="scripts/directives/tgTableInputFilter.js"></script>
+		<script src="scripts/directives/tgTableFooter.js"></script>
+		<script src="scripts/directives/tgTableFooterDataDetails.js"></script>
+		<script src="scripts/directives/tgTablePagination.js"></script>
+		<script src="scripts/directives/tgTableCellSelect.js"></script>
+		<script src="scripts/directives/tgTablePageNumber.js"></script>
+
+
+		</script>
+
+		</script>
+
+
+
+
+</html>
