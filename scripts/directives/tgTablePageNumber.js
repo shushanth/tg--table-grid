@@ -31,23 +31,6 @@
             tgTablePageNumberControllerSelf.gridDataCount = null;
             tgTablePageNumberControllerSelf.showTgTablePageNumber = {'pageSize':false};
 
-            //move this to services
-
-            var checkIfNumberHasDecimals = function(num){
-                return (num && (num%1 !==0));
-            };
-
-
-            //move to serivce
-
-            var makeAscendingArray = function(arrayLength){
-               return Array.apply(null,{length:arrayLength}).map(function(item,index){
-                  return index+1;
-               });
-
-
-
-            };
 
             //kickoff actions for page numbers
             tgTablePageNumberControllerSelf.initPageNumberActions = function(gridDataCount,defaultPageSize){
