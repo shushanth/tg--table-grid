@@ -13,11 +13,11 @@
 
     //inject dependencies
 
-    tgTablePageNumber.$inject = [];
+    tgTablePageNumber.$inject = ["tgTableGridHelpers"];
 
     //constructor:tgtablePageNumber
 
-    function tgTablePageNumber(){
+    function tgTablePageNumber(tgTableGridHelpers){
 
       //controller:tgTablePageNumberController
 
@@ -54,13 +54,10 @@
               tgTablePageNumberControllerSelf.gridDataCount = gridDataCount;
               tgTablePageNumberControllerSelf.tgTableMaxPageSize = Math.round(gridDataCount/defaultPageSize);
 
-
-
-
-              tgTablePageNumberControllerSelf.tgTablePageNumbers = makeAscendingArray(tgTablePageNumberControllerSelf.tgTableMaxPageSize);
+              tgTablePageNumberControllerSelf.tgTablePageNumbers = tgTableGridHelpers.getAscendingNumberArray(tgTablePageNumberControllerSelf.tgTableMaxPageSize);
               tgTablePageNumberControllerSelf.tgTablePageNumbers.push(tgTablePageNumberControllerSelf.tgTablePageNumbers.length+1);
 
-              if(checkIfNumberHasDecimals(gridDataCount/defaultPageSize)){
+              if(tgTableGridHelpers.checkIfNumberHasDecimals(gridDataCount/defaultPageSize)){
                 tgTablePageNumberControllerSelf.tgTableMaxPageSize+=1;
               }
 
@@ -77,13 +74,13 @@
                 $timeout(function(){
 
                   tgTablePageNumberControllerSelf.tgTableMaxPageSize = Math.round(tgTableTableMaxPageSizeValue);
-                  tgTablePageNumberControllerSelf.tgTablePageNumbers = makeAscendingArray(tgTablePageNumberControllerSelf.tgTableMaxPageSize);
+                  tgTablePageNumberControllerSelf.tgTablePageNumbers = tgTableGridHelpers.getAscendingNumberArray(tgTablePageNumberControllerSelf.tgTableMaxPageSize);
                   tgTablePageNumberControllerSelf.showTgTablePageNumber.pageSize = !tgTablePageNumberControllerSelf.showTgTablePageNumber.pageSize;
                 },0);
             });
 
             tgTablePageNumberControllerSelf.changePageAction = function(pageNumber){
-              
+
                 $rootScope.$emit('dataUpdateOnPageNumberAction',pageNumber);
             };
 
