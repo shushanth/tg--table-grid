@@ -1,0 +1,70 @@
+@import "variables";
+
+//mixins
+@mixin setFontSize($fontSize) {
+  font-size: $fontSize;
+}
+@mixin setFontWeight($fontWeight:$normal) {
+  font-weight: $fontWeight;
+}
+
+
+@mixin setBordeRadius($defaultRadius) {
+  border-radius: $defaultRadius;
+}
+
+@mixin onepxColorborder($color) {
+  border:$onepx-border $color;
+}
+
+@mixin marginTop($marginTop) {
+  margin-top: $marginTop;
+}
+@mixin right($right) {
+  right: $right;
+}
+@mixin left($left) {
+  left:$left;
+}
+@mixin top($top) {
+  top: $top;
+}
+@mixin bottom($bottom) {
+  bottom:$bottom;
+}
+
+@mixin backgroundColor($color){
+   background-color: $color;
+}
+
+@mixin cellSelectDefault() {
+  background-color: $cell-selection-default-color;
+}
+
+@mixin setColor($color) {
+  color:$color;
+}
+@mixin setbgColor($bgcolor:$default-primary) {
+  background-color: $bgcolor;
+}
+
+@mixin overflowY($y){
+  overflow-y: $y;
+}
+
+@mixin setWidth($width:$defaultWidth) {
+  width: $width;
+}
+
+@mixin setheight($height) {
+  height: $height;
+}
+
+@mixin setWidthHeight($width,$height) {
+  width: $width;
+  height:$height;
+}
+
+@mixin setZindex($zindex) {
+    z-index: $zindex;
+}
