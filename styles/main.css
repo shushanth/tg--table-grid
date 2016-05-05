@@ -14,6 +14,16 @@ body {
   body .padding-right-left-zero {
     padding-left: 0;
     padding-right: 0; }
+  body .padding-0 {
+    padding: 0; }
+  body .no-border-radius {
+    border-radius: 0; }
+  body .noraml-font-weight {
+    font-weight: normal; }
+  body .margin-top-zero {
+    margin-top: 0; }
+  body .default-primary-color {
+    background-color: #428bca; }
   body .border-all1px {
     border: 1px solid #ccc; }
   body .no-border-bottom {
@@ -31,6 +41,8 @@ body {
   body .width-height-100 {
     width: 100%;
     height: 100%; }
+  body .width-100 {
+    width: 100%; }
   body .z-index-100 {
     z-index: 100; }
   body .left-0 {
@@ -80,9 +92,15 @@ body {
       body .main-grid-body .body-content .body-text:last-child {
         border-right: none; }
   body .footer-main {
-    padding: 1%;
     border: 1px solid #ccc;
     border-top: none;
     background-color: #f4f4f4; }
+    body .footer-main .footer-data-details {
+      margin-top: 1%; }
+    body .footer-main .page-size-pagination-main {
+      margin-top: 1%; }
+      body .footer-main .page-size-pagination-main .pagination .page-buttons {
+        border-radius: 0;
+        color: #428bca; }
 
 /*# sourceMappingURL=main.css.map */

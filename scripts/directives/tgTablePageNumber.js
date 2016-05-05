@@ -83,7 +83,7 @@
             });
 
             tgTablePageNumberControllerSelf.changePageAction = function(pageNumber){
-              debugger;
+              
                 $rootScope.$emit('dataUpdateOnPageNumberAction',pageNumber);
             };
 

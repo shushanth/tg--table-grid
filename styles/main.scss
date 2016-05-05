@@ -1,94 +1,8 @@
-$padding-all-zero:0;
-$zero:0;
-$padding-top-bottom-1per :1% 0 1% 0;
-$onepx-border:1px solid;
-$onepx-lighter-border:1px solid;
-$small-letter-spacing:0.03em;
-$none:none;
-$hidden:hidden;
-$scroll:scroll;
-$absolute:absolute;
-$relative:relative;
-$cursor-pointer:pointer;
-$defaultWidth:100%;
-$defaultRadius:5px;
 
 
+@import "variables";
+@import "mixins";
 
-//colors variables
-$white:#fff;
-$lighter-white:#f3f3f3;
-$darker-white:#f4f4f4;
-
-//cell selection color;
-$cell-selection-default-color:#D1E6F1;
-
-
-
-//mixins
-@mixin setFontSize($fontSize) {
-  font-size: $fontSize;
-}
-@mixin setWidth($defaultWidth) {
-  width: $defaultWidth;
-}
-
-@mixin setBordeRadius($defaultRadius) {
-  border-radius: $defaultRadius;
-}
-
-@mixin onepxColorborder($color) {
-  border:$onepx-border $color;
-}
-
-@mixin marginTop($marginTop) {
-  margin-top: $marginTop;
-}
-@mixin right($right) {
-  right: $right;
-}
-@mixin left($left) {
-  left:$left;
-}
-@mixin top($top) {
-  top: $top;
-}
-@mixin bottom($bottom) {
-  bottom:$bottom;
-}
-
-@mixin backgroundColor($color){
-   background-color: $color;
-}
-
-@mixin cellSelectDefault() {
-  background-color: $cell-selection-default-color;
-}
-
-@mixin setColor($color) {
-  color:$color;
-}
-
-@mixin overflowY($y){
-  overflow-y: $y;
-}
-
-@mixin setWidth($width) {
-  width: $width;
-}
-
-@mixin setheight($height) {
-  height: $height;
-}
-
-@mixin setWidthHeight($width,$height) {
-  width: $width;
-  height:$height;
-}
-
-@mixin setZindex($zindex) {
-    z-index: $zindex;
-}
 
 
 body{
@@ -116,6 +30,27 @@ body{
     padding-right:$zero;
   }
 
+  .padding-0{
+    padding: $zero;
+  }
+
+  .no-border-radius{
+    border-radius: $zero;
+  }
+
+  .noraml-font-weight{
+    @include setFontWeight();
+  }
+
+  .margin-top-zero{
+    margin-top: $zero;
+  }
+
+  .default-primary-color{
+    @include setbgColor();
+  }
+
+
   .border-all1px{
     @include onepxColorborder(#ccc);
   }
@@ -142,6 +77,9 @@ body{
 
   .width-height-100{
     @include setWidthHeight(100%,100%);
+  }
+  .width-100{
+    @include setWidth();
   }
 
   .z-index-100{
@@ -221,12 +159,21 @@ body{
 
 
   .footer-main{
-    padding: 1%;
     border:1px solid #ccc;
     border-top:none;
     @include backgroundColor(#f4f4f4);
 
     .footer-data-details{
+      @include marginTop(1%);
+    }
+    .page-size-pagination-main{
+      @include marginTop(1%);
+      .pagination{
+        .page-buttons{
+          border-radius: $zero;
+          @include setColor($default-primary);
+        }
+      }
 
     }
   }

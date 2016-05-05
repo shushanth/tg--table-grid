@@ -1,12 +1,8 @@
-
-    <ul class="pagination pagination-sm">
+    <ul class="pagination pagination-sm margin-top-zero">
       <li>
-
-      <span class="cursor-pointer" ng-if="tgTablePageNumber.showTgTablePageNumber.pageSize"
+      <span class="cursor-pointer page-buttons" ng-if="tgTablePageNumber.showTgTablePageNumber.pageSize"
         ng-repeat="pageNumber in tgTablePageNumber.tgTablePageNumbers"
         ng-click="tgTablePageNumber.changePageAction($index+1)">{{pageNumber}}
       </span>
-
-
     </li>
     </ul>

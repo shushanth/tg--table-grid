@@ -1,17 +1,22 @@
-<section class="col-sm-9">
+<section class="col-sm-9 page-size-pagination-main">
 
    <section class="col-sm-3">
 
+     <section class="col-sm-7">
+        <label class="noraml-font-weight " for="">Page Size</label>
+     </section>
 
-     <label for="">Page Size</label>
+     <section class="col-sm-4 padding-0">
+       <select  class="width-100" name="" ng-model="tgTablePagination.paginationConfig.defaultPageSize"
+             ng-change="tgTablePagination.pageSizeChangeAction()" >
+           <option ng-repeat="pageSize in tgTablePagination.paginationConfig.pageSizes"
+             ng-disabled="tgTablePagination.checkDisabledState(pageSize,$last)">
+                 {{pageSize}}
+             </option>
+         </select>
+     </section>
 
-      <select  name="" ng-model="tgTablePagination.paginationConfig.defaultPageSize"
-            ng-change="tgTablePagination.pageSizeChangeAction()" >
-          <option ng-repeat="pageSize in tgTablePagination.paginationConfig.pageSizes"
-            ng-disabled="tgTablePagination.checkDisabledState(pageSize,$last)">
-                {{pageSize}}
-            </option>
-        </select>
+
 
 
 

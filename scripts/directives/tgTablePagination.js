@@ -15,9 +15,7 @@
 
  //constructor:tgTablePagination
    function tgTablePagination(){
-
       //controller
-
       var tgTablePaginationController = function($scope){
 
         var tgTablePaginationSelf = this;

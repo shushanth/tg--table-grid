@@ -47,7 +47,7 @@
       //listening for pagination changes
 
       $scope.$on('tgPaginationPageChange',function(event,options){
-        debugger;
+
             var pageSize = (angular.isString(options.defaultPageSize))? parseInt(options.defaultPageSize.trim()):options.defaultPageSize;
             tgTableBodySelf.dataLimit.pageSize = pageSize;
             tgTableBodySelf.tableData = tgTableBodySelf.tableGridData.slice(0,pageSize);
@@ -63,9 +63,7 @@
 
       //sets the table Data
       tgTableBodySelf.setTableData = function(defaultPageNumber) {
-        debugger;
         tgTableBodySelf.tableData = (!defaultPageNumber)? tgTableBodySelf.tableGridData.slice(defaultPageNumber,tgTableBodySelf.dataLimit.pageSize):tgTableBodySelf.tableGridData.slice(defaultPageNumber-tgTableBodySelf.dataLimit.pageSize,defaultPageNumber);
-
       };
 
 
