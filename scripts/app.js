@@ -1,4 +1,6 @@
-
+(function(){
   'use strict';
 
-  var tgApp = angular.module('tableGrid',[]);
+  var tgApp = angular.module('tableGrid',[]); 
+})();
+ 
