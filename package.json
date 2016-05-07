@@ -1,5 +1,5 @@
 {
-  "name": "grid-directive",
+  "name": "tg-table-grid",
   "version": "1.0.0",
   "main": "server.js",
   "dependencies": {
@@ -18,7 +18,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
+  "author": "shushanth pallegar (shushant3112@gmail.common)",
   "license": "ISC",
-  "description": "A directive which provides the grid structure for your data"
+  "description": "Angularjs Table Data Grid : A basic and simple table data grid with sorting,filtering and pagination"
 }
