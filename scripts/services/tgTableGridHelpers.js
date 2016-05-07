@@ -19,6 +19,19 @@
 
     function tgTableGridHelpers(){
 
+      //remove or add class based on the element used in the context (this:element)
+
+        var _removeAddClassConfig = {
+                removeClass:function(className){
+                  this.removeClass(className);
+                },
+                addClass:function(className){
+                  this.addClass(className);
+                }
+
+        };
+
+
         //check if the number has decimals in it
         var _checkIfNumberHasDecimals = function(number){
            return (number && (number%1!==0));
@@ -30,9 +43,12 @@
             });
         };
 
+
+
         return{
           checkIfNumberHasDecimals:_checkIfNumberHasDecimals,
-          getAscendingNumberArray : _getAscendingNumberArray
+          getAscendingNumberArray : _getAscendingNumberArray,
+          removeAddClassConfig:_removeAddClassConfig
         };
     }
 

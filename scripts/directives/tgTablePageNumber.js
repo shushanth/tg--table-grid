@@ -13,11 +13,11 @@
 
     //inject dependencies
 
-    tgTablePageNumber.$inject = ["tgTableGridHelpers"];
+    tgTablePageNumber.$inject = ["tgTableGridHelpers","tgTablePageNumberHelpers"];
 
     //constructor:tgtablePageNumber
 
-    function tgTablePageNumber(tgTableGridHelpers){
+    function tgTablePageNumber(tgTableGridHelpers,tgTablePageNumberHelpers){
 
       //controller:tgTablePageNumberController
 
@@ -51,7 +51,7 @@
             tgPaginationChangeEventUnbind = $scope.$on('tgPaginationPageChange',function(event,options){
               var tgTableTableMaxPageSizeValue = tgTablePageNumberControllerSelf.gridDataCount/options.defaultPageSize.trim();
               tgTablePageNumberControllerSelf.showTgTablePageNumber.pageSize = !tgTablePageNumberControllerSelf.showTgTablePageNumber.pageSize;
-              if(checkIfNumberHasDecimals(tgTableTableMaxPageSizeValue)){
+              if(tgTableGridHelpers.checkIfNumberHasDecimals(tgTableTableMaxPageSizeValue)){
                 tgTableTableMaxPageSizeValue+=1;
               }
                 $timeout(function(){
@@ -62,8 +62,9 @@
                 },0);
             });
 
-            tgTablePageNumberControllerSelf.changePageAction = function(pageNumber){
-
+            tgTablePageNumberControllerSelf.changePageAction = function(element){
+              var pageNumber = element.$parent.$index+1;
+                tgTablePageNumberHelpers.activatePageButton(pageNumber);
                 $rootScope.$emit('dataUpdateOnPageNumberAction',pageNumber);
             };
 

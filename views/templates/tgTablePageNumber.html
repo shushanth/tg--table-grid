@@ -2,7 +2,9 @@
       <li>
       <span class="cursor-pointer page-buttons" ng-if="tgTablePageNumber.showTgTablePageNumber.pageSize"
         ng-repeat="pageNumber in tgTablePageNumber.tgTablePageNumbers"
-        ng-click="tgTablePageNumber.changePageAction($index+1)">{{pageNumber}}
+        ng-click="tgTablePageNumber.changePageAction(this)"
+        ng-class="{'no-border-right':!$last,'page-button-activate':$first}">
+        {{pageNumber}}
       </span>
     </li>
     </ul>

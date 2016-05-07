@@ -38,6 +38,8 @@ body{
     border-radius: $zero;
   }
 
+
+
   .noraml-font-weight{
     @include setFontWeight();
   }
@@ -169,9 +171,19 @@ body{
     .page-size-pagination-main{
       @include marginTop(1%);
       .pagination{
+        li{
+          .page-button-activate{
+            color: $white;
+            @include setBackground($default-primary);
+          }
+        }
+
         .page-buttons{
           border-radius: $zero;
           @include setColor($default-primary);
+        }
+        .no-border-right{
+          @include noBorderRight();
         }
       }
 

@@ -99,8 +99,13 @@ body {
       margin-top: 1%; }
     body .footer-main .page-size-pagination-main {
       margin-top: 1%; }
+      body .footer-main .page-size-pagination-main .pagination li .page-button-activate {
+        color: #fff;
+        background: #428bca; }
       body .footer-main .page-size-pagination-main .pagination .page-buttons {
         border-radius: 0;
         color: #428bca; }
+      body .footer-main .page-size-pagination-main .pagination .no-border-right {
+        border-right: 0; }
 
 /*# sourceMappingURL=main.css.map */

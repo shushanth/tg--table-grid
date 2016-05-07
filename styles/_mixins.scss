@@ -8,6 +8,10 @@
   font-weight: $fontWeight;
 }
 
+@mixin setBackground($background) {
+    background: $background;
+}
+
 
 @mixin setBordeRadius($defaultRadius) {
   border-radius: $defaultRadius;
@@ -16,6 +20,11 @@
 @mixin onepxColorborder($color) {
   border:$onepx-border $color;
 }
+
+@mixin noBorderRight(){
+  border-right:$zero;
+}
+
 
 @mixin marginTop($marginTop) {
   margin-top: $marginTop;
