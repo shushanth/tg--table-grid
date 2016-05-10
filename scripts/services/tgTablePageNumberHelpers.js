@@ -23,7 +23,6 @@
 
      var _unActivateRestPageButtons = function(){
        var _pageButtons = angular.element('.page-buttons');
-       //_pageButtons.removeClass('page-button-activate');
        tgTableGridHelpers.removeAddClassConfig.removeClass.call(_pageButtons,'page-button-activate');
      };
 

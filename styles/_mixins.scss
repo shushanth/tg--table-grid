@@ -17,6 +17,17 @@
   border-radius: $defaultRadius;
 }
 
+@mixin setLeftTopbottomBorderRadius($rightRadius,$leftRadius) {
+  border-top-left-radius:$rightRadius;
+  border-bottom-left-radius:$leftRadius;
+}
+
+@mixin setRightTopbottomBorderRadius($rightRadius,$leftRadius) {
+  border-top-right-radius:$rightRadius;
+  border-bottom-right-radius:$leftRadius;
+}
+
+
 @mixin onepxColorborder($color) {
   border:$onepx-border $color;
 }

@@ -29,11 +29,12 @@
             var tgPaginationChangeEventUnbind = null;
             tgTablePageNumberControllerSelf.tgTableMaxPageSize = null;
             tgTablePageNumberControllerSelf.gridDataCount = null;
-            tgTablePageNumberControllerSelf.showTgTablePageNumber = {'pageSize':false};
+            tgTablePageNumberControllerSelf.showTgTablePageNumber = {'pageSize':false,'pageLimitDefault':10};
 
 
             //kickoff actions for page numbers
             tgTablePageNumberControllerSelf.initPageNumberActions = function(gridDataCount,defaultPageSize){
+
               tgTablePageNumberControllerSelf.gridDataCount = gridDataCount;
               tgTablePageNumberControllerSelf.tgTableMaxPageSize = Math.round(gridDataCount/defaultPageSize);
 
@@ -64,6 +65,10 @@
 
             tgTablePageNumberControllerSelf.changePageAction = function(element){
               var pageNumber = element.$parent.$index+1;
+                if(tgTablePageNumberControllerSelf.tgTablePageNumbers>tgTablePageNumberControllerSelf.showTgTablePageNumber.pageLimitDefault){
+                    tgTablePageNumberHelpers.handlePageNumbers(pageNumber);
+                }
+
                 tgTablePageNumberHelpers.activatePageButton(pageNumber);
                 $rootScope.$emit('dataUpdateOnPageNumberAction',pageNumber);
             };
@@ -91,6 +96,7 @@
         return{
           restrict:'E',
           replace: true,
+          priority:999,
           require:['^tgTablePagination','tgTablePageNumber'],
           link:tgTablePageNumberLink,
           controller:['$scope','$timeout','$rootScope',tgTablePageNumberController],

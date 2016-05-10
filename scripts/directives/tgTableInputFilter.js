@@ -46,6 +46,7 @@
           tgTableInputFilterSelf.searchGridData();
         };
 
+
       };
 
       //link tgTableInputFilterLink
