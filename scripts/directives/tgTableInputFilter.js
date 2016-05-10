@@ -27,9 +27,19 @@
 
         tgTableInputFilterSelf.searchData = null;
 
+
+        var removeCloseIconIfEmpty = function(searchOptionArgs){
+          var searchInputKey = (searchOptionArgs)? Object.keys(searchOptionArgs) : null;
+           if(!searchOptionArgs[searchInputKey]){
+             tgTableInputFilterSelf.searchData = null;
+           }
+
+        };
+
         //serach grid data
         tgTableInputFilterSelf.searchGridData = function(){
            var searchArgs =  tgTableInputFilterSelf.searchData;
+           removeCloseIconIfEmpty(searchArgs);
            tgTableHeaderController.broadcastEvent('tgDataGridSearch',searchArgs);
         };
 
@@ -45,7 +55,6 @@
           tgTableInputFilterSelf.searchData = null;
           tgTableInputFilterSelf.searchGridData();
         };
-
 
       };
 
