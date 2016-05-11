@@ -172,7 +172,7 @@ body{
     .page-size-pagination-main{
       @include marginTop(1%);
       .pagination{
-        
+
         li{
           .page-button-activate{
             color: $white;
@@ -180,13 +180,18 @@ body{
           }
         }
 
+        .page-button-dimension{
+          @include setWidthHeight(30px,30px);
+        }
+
         .page-buttons{
           border-radius: $zero;
           text-align: $center;
           @include setColor($default-primary);
-          @include setWidthHeight(30px,30px);
+
           font-size:13px;
         }
+
         .no-border-right{
           @include noBorderRight();
         }
@@ -197,6 +202,15 @@ body{
         .p-right-top-bottom-border-radius{
           @include setRightTopbottomBorderRadius(3px,3px);
         }
+
+        .p-no-left-border-radius{
+          @include setLeftTopbottomBorderRadius(0,0);
+        }
+        .p-no-right-border-radius{
+          @include setRightTopbottomBorderRadius(0,0);
+        }
+
+
       }
 
     }
