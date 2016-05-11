@@ -86,6 +86,7 @@
       };
 
       $rootScope.$on('dataUpdateOnPageNumberAction',function(event,paginationNumber){
+        debugger;
         tgTableBodySelf.setTableData(tgTableBodySelf.dataLimit.pageSize*paginationNumber);
       });
 

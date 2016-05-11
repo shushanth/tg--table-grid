@@ -27,6 +27,9 @@
   border-bottom-right-radius:$leftRadius;
 }
 
+@mixin setPaddingBottom($padding-bottom) {
+  padding-bottom:$padding-bottom;
+}
 
 @mixin onepxColorborder($color) {
   border:$onepx-border $color;

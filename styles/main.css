@@ -1,128 +1,129 @@
-body {
-  font-family: 'Merriweather Sans', sans-serif; }
-  body .posAbs {
-    position: absolute; }
-  body .posRelative {
-    position: relative; }
-  body .small-letter-space {
-    letter-spacing: 0.03em; }
-  body .padding-all-zero {
-    padding: 0; }
-  body .padding-top-bottom-zero {
-    padding-top: 0;
-    padding-bottom: 0; }
-  body .padding-right-left-zero {
-    padding-left: 0;
-    padding-right: 0; }
-  body .padding-0 {
-    padding: 0; }
-  body .no-border-radius {
-    border-radius: 0; }
-  body .noraml-font-weight {
-    font-weight: normal; }
-  body .margin-top-zero {
-    margin-top: 0; }
-  body .default-primary-color {
-    background-color: #428bca; }
-  body .border-all1px {
-    border: 1px solid #ccc; }
-  body .no-border-bottom {
-    border-bottom: none; }
-  body .cursor-pointer {
-    cursor: pointer; }
-  body .white-color-darker-class {
-    background-color: #f4f4f4; }
-  body .white-color-lighter-class {
-    background-color: #f3f3f3; }
-  body .white-color-class {
-    background-color: #fff; }
-  body .hidden-y-overflow-scroll {
-    overflow-y: scroll; }
-  body .width-height-100 {
-    width: 100%;
-    height: 100%; }
-  body .width-100 {
-    width: 100%; }
-  body .z-index-100 {
-    z-index: 100; }
-  body .left-0 {
-    left: 0; }
-  body .cell-select-default {
-    background-color: #D1E6F1; }
-  body .header-content {
-    padding: 1% 0 1% 0;
-    padding-left: 2%;
-    border-right: 1px solid #ccc; }
-    body .header-content .filter-section {
-      right: 5%;
+body .posAbs {
+  position: absolute; }
+body .posRelative {
+  position: relative; }
+body .small-letter-space {
+  letter-spacing: 0.03em; }
+body .padding-all-zero {
+  padding: 0; }
+body .padding-top-bottom-zero {
+  padding-top: 0;
+  padding-bottom: 0; }
+body .padding-right-left-zero {
+  padding-left: 0;
+  padding-right: 0; }
+body .padding-0 {
+  padding: 0; }
+body .no-border-radius {
+  border-radius: 0; }
+body .noraml-font-weight {
+  font-weight: normal; }
+body .margin-top-zero {
+  margin-top: 0; }
+body .margin-zero {
+  margin: 0; }
+body .default-primary-color {
+  background-color: #428bca; }
+body .border-all1px {
+  border: 1px solid #ccc; }
+body .no-border-bottom {
+  border-bottom: none; }
+body .cursor-pointer {
+  cursor: pointer; }
+body .white-color-darker-class {
+  background-color: #f4f4f4; }
+body .white-color-lighter-class {
+  background-color: #f3f3f3; }
+body .white-color-class {
+  background-color: #fff; }
+body .hidden-y-overflow-scroll {
+  overflow-y: scroll; }
+body .width-height-100 {
+  width: 100%;
+  height: 100%; }
+body .width-100 {
+  width: 100%; }
+body .z-index-100 {
+  z-index: 100; }
+body .left-0 {
+  left: 0; }
+body .cell-select-default {
+  background-color: #D1E6F1; }
+body .header-content {
+  padding: 1% 0 1% 0;
+  padding-left: 2%;
+  border-right: 1px solid #ccc; }
+  body .header-content .filter-section {
+    right: 5%;
+    font-size: 12px;
+    color: #777;
+    width: 100px; }
+    body .header-content .filter-section .filter-sort-icon {
+      right: 5%; }
+    body .header-content .filter-section .filter-search-icon {
+      left: 60%; }
+  body .header-content .search-filter-input-section {
+    margin-top: 5%; }
+    body .header-content .search-filter-input-section .search {
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
       font-size: 12px;
-      color: #777;
-      width: 100px; }
-      body .header-content .filter-section .filter-sort-icon {
-        right: 5%; }
-      body .header-content .filter-section .filter-search-icon {
-        left: 60%; }
-    body .header-content .search-filter-input-section {
-      margin-top: 5%; }
-      body .header-content .search-filter-input-section .search {
-        width: 90%;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        outline: none;
-        font-size: 12px;
-        padding-left: 5%;
-        padding: 3%;
-        letter-spacing: 0.075em; }
-      body .header-content .search-filter-input-section .search-close-icon {
-        top: 35%;
-        left: 80%;
-        color: #999;
-        font-size: 10px; }
-  body .header-content:last-child {
-    border-right: none; }
-  body .main-grid-body {
-    max-height: 300px; }
-    body .main-grid-body .body-content {
-      border-bottom: none; }
-      body .main-grid-body .body-content .body-text {
-        border-right: 1px solid #ccc;
-        margin-bottom: 0;
-        padding: 1% 0 1% 0;
-        padding-left: 2%; }
-      body .main-grid-body .body-content .body-text:last-child {
-        border-right: none; }
-  body .footer-main {
-    border: 1px solid #ccc;
-    border-top: none;
-    background-color: #f4f4f4; }
-    body .footer-main .footer-data-details {
-      margin-top: 1%; }
-    body .footer-main .page-size-pagination-main {
-      margin-top: 1%; }
-      body .footer-main .page-size-pagination-main .pagination li .page-button-activate {
-        color: #fff;
-        background: #428bca; }
-      body .footer-main .page-size-pagination-main .pagination .page-button-dimension {
-        width: 30px;
-        height: 30px; }
-      body .footer-main .page-size-pagination-main .pagination .page-buttons {
-        border-radius: 0;
-        text-align: center;
-        color: #428bca;
-        font-size: 13px; }
-      body .footer-main .page-size-pagination-main .pagination .no-border-right {
-        border-right: 0; }
-      body .footer-main .page-size-pagination-main .pagination .p-left-top-bottom-border-radius {
-        border-top-left-radius: 3px;
-        border-bottom-left-radius: 3px; }
-      body .footer-main .page-size-pagination-main .pagination .p-right-top-bottom-border-radius {
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px; }
-      body .footer-main .page-size-pagination-main .pagination .p-no-left-border-radius {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0; }
-      body .footer-main .page-size-pagination-main .pagination .p-no-right-border-radius {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0; }
+      padding-left: 5%;
+      padding: 3%;
+      letter-spacing: 0.075em; }
+    body .header-content .search-filter-input-section .search-close-icon {
+      top: 35%;
+      left: 80%;
+      color: #999;
+      font-size: 10px; }
+body .header-content:last-child {
+  border-right: none; }
+body .main-grid-body {
+  max-height: 300px; }
+  body .main-grid-body .body-content {
+    border-bottom: none; }
+    body .main-grid-body .body-content .body-text {
+      border-right: 1px solid #ccc;
+      margin-bottom: 0;
+      padding: 1% 0 1% 0;
+      padding-left: 2%; }
+    body .main-grid-body .body-content .body-text:last-child {
+      border-right: none; }
+body .footer-main {
+  border: 1px solid #ccc;
+  border-top: none;
+  background-color: #f4f4f4;
+  padding-bottom: 5px; }
+  body .footer-main .footer-data-details {
+    margin-top: 1%; }
+  body .footer-main .page-size-pagination-main {
+    margin-top: 1%; }
+    body .footer-main .page-size-pagination-main .pagination li .page-button-activate {
+      color: #fff;
+      background: #428bca; }
+    body .footer-main .page-size-pagination-main .pagination .page-button-dimension {
+      width: 30px;
+      height: 30px; }
+    body .footer-main .page-size-pagination-main .pagination .page-buttons {
+      border-radius: 0;
+      text-align: center;
+      color: #428bca;
+      font-size: 13px; }
+    body .footer-main .page-size-pagination-main .pagination .no-border-right {
+      border-right: 0; }
+    body .footer-main .page-size-pagination-main .pagination .p-left-top-bottom-border-radius {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px; }
+    body .footer-main .page-size-pagination-main .pagination .p-right-top-bottom-border-radius {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px; }
+    body .footer-main .page-size-pagination-main .pagination .p-no-left-border-radius {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0; }
+    body .footer-main .page-size-pagination-main .pagination .p-no-right-border-radius {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0; }
 
 /*# sourceMappingURL=main.css.map */

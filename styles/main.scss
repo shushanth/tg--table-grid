@@ -7,7 +7,7 @@
 
 body{
   //common scss
-  font-family:'Merriweather Sans', sans-serif;
+
   .posAbs {
     position: $absolute;
   }
@@ -47,6 +47,9 @@ body{
 
   .margin-top-zero{
     margin-top: $zero;
+  }
+  .margin-zero{
+    margin:$zero;
   }
 
   .default-primary-color{
@@ -165,6 +168,7 @@ body{
     border:1px solid #ccc;
     border-top:none;
     @include backgroundColor(#f4f4f4);
+    @include setPaddingBottom(5px);
 
     .footer-data-details{
       @include marginTop(1%);

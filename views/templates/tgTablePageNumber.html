@@ -1,14 +1,16 @@
-    <ul class="pagination pagination-sm margin-top-zero">
+    <ul class="pagination pagination-sm margin-zero">
       <li>
-      <span class="cursor-pointer no-border-right p-no-right-border-radius page-button-dimension p-no-left-border-radius"><i class="glyphicon glyphicon-menu-left"></i></span>
+      <span class="cursor-pointer no-border-right p-no-right-border-radius page-button-dimension p-no-left-border-radius"
+      ng-click="tgTablePageNumber.previousAction()"><i class="glyphicon glyphicon-menu-left"></i></span>
 
-      <span class="cursor-pointer page-buttons page-button-dimension no-border-right" ng-if="tgTablePageNumber.showTgTablePageNumber.pageSize"
+      <span class="cursor-pointer page-buttons page-button-dimension no-border-right" ng-if="tgTablePageNumber.pageNumberConfig.pageSize"
         ng-repeat="pageNumber in tgTablePageNumber.tgTablePageNumbers"
         ng-click="tgTablePageNumber.changePageAction(this)"
         ng-class="{'page-button-activate':$first}">
         {{pageNumber}}
       </span>
-      
-      <span class="cursor-pointer p-right-top-bottom-border-radius page-button-dimension p-no-left-border-radius"><i class="glyphicon glyphicon-menu-right"></i></span>
+
+      <span class="cursor-pointer p-right-top-bottom-border-radius page-button-dimension p-no-left-border-radius"
+      ng-click="tgTablePageNumber.nextAction()"><i class="glyphicon glyphicon-menu-right"></i></span>
     </li>
     </ul>
