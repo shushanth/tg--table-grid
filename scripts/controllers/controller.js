@@ -263,7 +263,7 @@ function tgController($scope) {
     'title': $scope.title,
     'data': $scope.data,
     'cellSelection':[true,true,true],//enable,singleSelect,toggleSelect
-    'pagination':[true,[53,3,15,56,75]],//enable ,[selected page]
+    'pagination':[true,[15,53,3,56,75]],//enable ,[selected page]
 
 
   };

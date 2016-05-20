@@ -29,11 +29,25 @@
             var tgPaginationChangeEventUnbind = null;
             tgTablePageNumberControllerSelf.tgTableMaxPageSize = null;
             tgTablePageNumberControllerSelf.gridDataCount = null;
-            tgTablePageNumberControllerSelf.pageNumberConfig = {'pageSize':false,'pageLimitDefault':10,'currentPage':1};
+
+            tgTablePageNumberControllerSelf.pageNumberConfig = {'pageSize':false,'pageLimitDefault':9,'currentPage':1};
 
             var emitEvent = function(emitEventName,emitArgs){
                 $rootScope.$emit(emitEventName,emitArgs);
             };
+
+            var prevNextActionConfig = {
+                action:function(){
+
+                  var pageActionNumber = (this.action === 'prev')? tgTablePageNumberControllerSelf.pageNumberConfig.currentPage-1 :tgTablePageNumberControllerSelf.pageNumberConfig.currentPage+1;
+                  tgTablePageNumberHelpers.activatePageButton(pageActionNumber);
+                  emitEvent('dataUpdateOnPageNumberAction',pageActionNumber);
+                  tgTablePageNumberControllerSelf.pageNumberConfig.currentPage = pageActionNumber;
+
+                }
+
+            };
+
 
             //kickoff actions for page numbers
             tgTablePageNumberControllerSelf.initPageNumberActions = function(gridDataCount,defaultPageSize){
@@ -41,7 +55,7 @@
               tgTablePageNumberControllerSelf.gridDataCount = gridDataCount;
               tgTablePageNumberControllerSelf.tgTableMaxPageSize = Math.round(gridDataCount/defaultPageSize);
 
-              tgTablePageNumberControllerSelf.tgTablePageNumbers = tgTableGridHelpers.getAscendingNumberArray(tgTablePageNumberControllerSelf.tgTableMaxPageSize);
+              tgTablePageNumberControllerSelf.tgTablePageNumbers = tgTableGridHelpers.getAscendingNumberArray(tgTablePageNumberControllerSelf.pageNumberConfig.pageLimitDefault);
               tgTablePageNumberControllerSelf.tgTablePageNumbers.push(tgTablePageNumberControllerSelf.tgTablePageNumbers.length+1);
 
               if(tgTableGridHelpers.checkIfNumberHasDecimals(gridDataCount/defaultPageSize)){
@@ -50,21 +64,6 @@
 
               tgTablePageNumberControllerSelf.pageNumberConfig.pageSize = !tgTablePageNumberControllerSelf.pageNumberConfig.pageSize;
             };
-
-            //listening to event change and updating the view
-            tgPaginationChangeEventUnbind = $scope.$on('tgPaginationPageChange',function(event,options){
-              var tgTableTableMaxPageSizeValue = tgTablePageNumberControllerSelf.gridDataCount/options.defaultPageSize.trim();
-              tgTablePageNumberControllerSelf.pageNumberConfig.pageSize = !tgTablePageNumberControllerSelf.pageNumberConfig.pageSize;
-              if(tgTableGridHelpers.checkIfNumberHasDecimals(tgTableTableMaxPageSizeValue)){
-                tgTableTableMaxPageSizeValue+=1;
-              }
-                $timeout(function(){
-
-                  tgTablePageNumberControllerSelf.tgTableMaxPageSize = Math.round(tgTableTableMaxPageSizeValue);
-                  tgTablePageNumberControllerSelf.tgTablePageNumbers = tgTableGridHelpers.getAscendingNumberArray(tgTablePageNumberControllerSelf.tgTableMaxPageSize);
-                  tgTablePageNumberControllerSelf.pageNumberConfig.pageSize = !tgTablePageNumberControllerSelf.pageNumberConfig.pageSize;
-                },0);
-            });
 
             tgTablePageNumberControllerSelf.changePageAction = function(element){
               var pageNumber = element.$parent.$index+1;
@@ -80,41 +79,38 @@
 
             };
 
-            var prevNextActionConfig = {
-                action:function(){
-                  var pageActionNumber = (this.action === 'prev')? tgTablePageNumberControllerSelf.pageNumberConfig.currentPage-1 :tgTablePageNumberControllerSelf.pageNumberConfig.currentPage+1;
-                  tgTablePageNumberHelpers.activatePageButton(pageActionNumber);
-                  emitEvent('dataUpdateOnPageNumberAction',pageActionNumber);
-                  tgTablePageNumberControllerSelf.pageNumberConfig.currentPage = pageActionNumber;
-                }
-
-            };
 
             tgTablePageNumberControllerSelf.previousAction = function(){
+
                 var pagePrev = {'action':'prev'};
-                prevNextActionConfig.action.call(pagePrev);
-                // var previousPageNumber = tgTablePageNumberControllerSelf.pageNumberConfig.currentPage-1;
-                // tgTablePageNumberHelpers.activatePageButton(previousPageNumber);
-                // emitEvent('dataUpdateOnPageNumberAction',previousPageNumber);
-                // tgTablePageNumberControllerSelf.pageNumberConfig.currentPage = previousPageNumber;
+                tgTablePageNumberControllerSelf.pageNumberConfig.currentPage=prevNextActionConfig.action.call(pagePrev);
+
 
             };
 
             tgTablePageNumberControllerSelf.nextAction = function(){
               var pagePrev = {'action':'next'};
+              var pageMiddleNumber = tgTablePageNumberControllerSelf.tgTablePageNumbers.length/2;
               prevNextActionConfig.action.call(pagePrev);
-              // var previousPageNumber = tgTablePageNumberControllerSelf.pageNumberConfig.currentPage-1;
-              // tgTablePageNumberHelpers.activatePageButton(previousPageNumber);
-              // emitEvent('dataUpdateOnPageNumberAction',previousPageNumber);
-              // tgTablePageNumberControllerSelf.pageNumberConfig.currentPage = previousPageNumber;
+
+
+              if(tgTablePageNumberControllerSelf.pageNumberConfig.currentPage < tgTablePageNumberControllerSelf.tgTableMaxPageSize && tgTablePageNumberControllerSelf.pageNumberConfig.currentPage > pageMiddleNumber){
+                tgTablePageNumberControllerSelf.tgTablePageNumbers.shift();
+                tgTablePageNumberControllerSelf.tgTablePageNumbers.push(tgTablePageNumberControllerSelf.tgTablePageNumbers[tgTablePageNumberControllerSelf.tgTablePageNumbers.length-1]+1);
+                $timeout(function(){
+                  tgTablePageNumberHelpers.removeActivatedClass(0);
+                },0,false);
+              }
+
             };
 
 
 
             $scope.$on('destroy',function(){
-                if(timer)
+                if(timer){
                   timer.cancel();
-                  tgPaginationChangeEventUnbind();
+                }
+                tgPaginationChangeEventUnbind();
             });
       };
 
