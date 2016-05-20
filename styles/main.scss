@@ -192,9 +192,12 @@ body{
           border-radius: $zero;
           text-align: $center;
           @include setColor($default-primary);
+          @include setPaddingLeft(8px);
+          font-size:12px;
 
-          font-size:13px;
         }
+
+
 
         .no-border-right{
           @include noBorderRight();
@@ -214,6 +217,17 @@ body{
           @include setRightTopbottomBorderRadius(0,0);
         }
 
+
+      }
+
+      .page-navigation{
+
+        .page-navigation-buttons{
+          @include setBackground(#fff);
+          @include setColor(#2e6da4);
+          margin-right: 2%;
+          border:$none;
+        }
 
       }
 

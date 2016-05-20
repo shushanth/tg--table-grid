@@ -110,7 +110,8 @@ body .footer-main {
       border-radius: 0;
       text-align: center;
       color: #428bca;
-      font-size: 13px; }
+      padding-left: 8px;
+      font-size: 12px; }
     body .footer-main .page-size-pagination-main .pagination .no-border-right {
       border-right: 0; }
     body .footer-main .page-size-pagination-main .pagination .p-left-top-bottom-border-radius {
@@ -125,5 +126,10 @@ body .footer-main {
     body .footer-main .page-size-pagination-main .pagination .p-no-right-border-radius {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0; }
+    body .footer-main .page-size-pagination-main .page-navigation .page-navigation-buttons {
+      background: #fff;
+      color: #2e6da4;
+      margin-right: 2%;
+      border: none; }
 
 /*# sourceMappingURL=main.css.map */
