@@ -36,11 +36,12 @@
      var _removedActivatedClass = function(index2Remove){
        var index =index2Remove;
        var element = angular.element('.page-buttons').eq(index);
-       
         tgTableGridHelpers.removeAddClassConfig.removeClass.call(element,'page-button-activate');
 
+     };
 
-
+     var _checkForFirstValue = function(value){
+       return tgTableGridHelpers.isEqual2One(value);
      };
 
      var  _activatePageButton = function(elementIndex){
@@ -53,7 +54,8 @@
 
       return{
         activatePageButton:_activatePageButton,
-        removeActivatedClass:_removedActivatedClass
+        removeActivatedClass:_removedActivatedClass,
+        checkForFirstValue:_checkForFirstValue
       };
    }
 

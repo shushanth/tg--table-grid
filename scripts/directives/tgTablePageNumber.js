@@ -26,9 +26,10 @@
 
             var tgTablePageNumberControllerSelf = this;
             var timer = null;
-            var tgPaginationChangeEventUnbind = null;
+            var tgTablePainationPageChangeEventunBind = null;
             tgTablePageNumberControllerSelf.tgTableMaxPageSize = null;
             tgTablePageNumberControllerSelf.gridDataCount = null;
+            tgTablePageNumberControllerSelf.refreshOnPageSizeChange=true;
 
             tgTablePageNumberControllerSelf.pageNumberConfig = {'pageSize':false,'pageLimitDefault':9,'currentPage':1};
 
@@ -38,15 +39,31 @@
 
             var prevNextActionConfig = {
                 action:function(){
-
                   var pageActionNumber = (this.action === 'prev')? tgTablePageNumberControllerSelf.pageNumberConfig.currentPage-1 :tgTablePageNumberControllerSelf.pageNumberConfig.currentPage+1;
                   tgTablePageNumberHelpers.activatePageButton(pageActionNumber);
                   emitEvent('dataUpdateOnPageNumberAction',pageActionNumber);
                   tgTablePageNumberControllerSelf.pageNumberConfig.currentPage = pageActionNumber;
 
+                },
+                disabledAction:function(options){
+                  var direction = options;
+                  if(direction.left){
+                      return tgTablePageNumberHelpers.checkForFirstValue(direction.value);
+                  }
+                  else{
+                    return (direction.value === tgTablePageNumberControllerSelf.tgTableMaxPageSize);
+                  }
+
                 }
 
             };
+
+          tgTablePainationPageChangeEventunBind = $scope.$on('tgPaginationPageChange',function(){
+              tgTablePageNumberControllerSelf.refreshOnPageSizeChange = false;
+              $timeout(function(){
+                  tgTablePageNumberControllerSelf.refreshOnPageSizeChange = true;
+              },0);
+            });
 
 
             //kickoff actions for page numbers
@@ -61,7 +78,7 @@
               if(tgTableGridHelpers.checkIfNumberHasDecimals(gridDataCount/defaultPageSize)){
                 tgTablePageNumberControllerSelf.tgTableMaxPageSize+=1;
               }
-
+              tgTablePageNumberControllerSelf.isLeftIndicatorDisabled();
               tgTablePageNumberControllerSelf.pageNumberConfig.pageSize = !tgTablePageNumberControllerSelf.pageNumberConfig.pageSize;
             };
 
@@ -80,10 +97,26 @@
             };
 
 
+            //check fo icon disabled
+
+            tgTablePageNumberControllerSelf.isLeftIndicatorDisabled = function(){
+                var disabeldConfig = {
+                  left:true,
+                  value:tgTablePageNumberControllerSelf.pageNumberConfig.currentPage
+                };
+                return prevNextActionConfig.disabledAction.call(null,disabeldConfig);
+            };
+
             tgTablePageNumberControllerSelf.previousAction = function(){
 
                 var pagePrev = {'action':'prev'};
-                tgTablePageNumberControllerSelf.pageNumberConfig.currentPage=prevNextActionConfig.action.call(pagePrev);
+                if(tgTablePageNumberControllerSelf.pageNumberConfig.currentPage >= 1){
+                     if(tgTablePageNumberControllerSelf.pageNumberConfig.currentPage === 1)
+                              return;
+
+                    prevNextActionConfig.action.call(pagePrev);
+                }
+
 
 
             };
@@ -106,11 +139,13 @@
 
 
 
+
+
             $scope.$on('destroy',function(){
                 if(timer){
                   timer.cancel();
                 }
-                tgPaginationChangeEventUnbind();
+                tgTablePainationPageChangeEventunBind();
             });
       };
 

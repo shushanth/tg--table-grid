@@ -11,7 +11,7 @@
              ng-change="tgTablePagination.pageSizeChangeAction()" >
            <option ng-repeat="pageSize in tgTablePagination.paginationConfig.pageSizes"
              ng-disabled="tgTablePagination.checkDisabledState(pageSize,$last)">
-                 {{pageSize}}
+                 {{::pageSize}}
              </option>
          </select>
      </section>
@@ -22,7 +22,7 @@
 
 </section>
 
- <section class="col-sm-6">
+ <section class="col-sm-9">
    <tg-table-page-number></tg-table-page-number>
  </section>
 

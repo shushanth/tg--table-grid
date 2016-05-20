@@ -43,12 +43,17 @@
             });
         };
 
+        var _isEqual2One = function(value){
+            return (value === 1);
+        };
+
 
 
         return{
           checkIfNumberHasDecimals:_checkIfNumberHasDecimals,
           getAscendingNumberArray : _getAscendingNumberArray,
-          removeAddClassConfig:_removeAddClassConfig
+          removeAddClassConfig:_removeAddClassConfig,
+          isEqual2One:_isEqual2One
         };
     }
 
