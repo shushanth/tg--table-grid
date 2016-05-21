@@ -47,6 +47,10 @@
   border-right:$zero;
 }
 
+@mixin onePXBorderRight($borderColor:inherit){
+  border-right: 1px solid $borderColor;
+}
+
 
 @mixin marginTop($marginTop) {
   margin-top: $marginTop;

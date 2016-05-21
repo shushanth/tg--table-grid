@@ -182,6 +182,10 @@ body{
             color: $white;
             @include setBackground($default-primary);
           }
+
+          .border-right-onePx{
+            @include onePXBorderRight(#ddd);
+          }
         }
 
         .page-button-dimension{
@@ -202,6 +206,7 @@ body{
         .no-border-right{
           @include noBorderRight();
         }
+
 
         .p-left-top-bottom-border-radius{
           @include setLeftTopbottomBorderRadius(3px,3px) ;

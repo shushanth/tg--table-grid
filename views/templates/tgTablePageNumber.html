@@ -5,17 +5,18 @@
 
     <ul class="pagination pagination-sm margin-zero">
       <li>
-      <span class="cursor-pointer page-buttons page-button-dimension" ng-if="tgTablePageNumber.pageNumberConfig.pageSize"
+      <span class="cursor-pointer page-buttons page-button-dimension no-border-right" ng-if="tgTablePageNumber.pageNumberConfig.pageSize"
         ng-repeat="pageNumber in tgTablePageNumber.tgTablePageNumbers"
         ng-click="tgTablePageNumber.changePageAction(this)"
-        ng-class="{'page-button-activate p-left-top-bottom-border-radius':$first,'p-right-top-bottom-border-radius':$last}">
+        ng-class="{'page-button-activate p-left-top-bottom-border-radius':$first,'p-right-top-bottom-border-radius border-right-onePx':$last}"
+         >
         {{pageNumber}}
       </span>
     </li>
     </ul>
 </section>
 
-  <section class="col-sm-4 page-navigation padding-0">
+  <section class="col-sm-4 page-navigation padding-0" >
     <!-- left  extreme play  navigation button -->
     <button class="btn btn-primary btn-sm cursor-pointer page-navigation-buttons"
     ng-click=""
@@ -29,7 +30,8 @@
 
       <!-- right play navigation button -->
     <button class="btn btn-primary btn-sm cursor-pointer page-navigation-buttons"
-      ng-click="tgTablePageNumber.nextAction()">
+      ng-click="tgTablePageNumber.nextAction()"
+      ng-disabled="tgTablePageNumber.isRightIndicatorDisabled()">
       <i class="glyphicon glyphicon-triangle-right"></i>
   </button>
   <!-- right play navigation button -->
@@ -37,7 +39,7 @@
   <!-- right extreme play navigation button -->
   <button class="btn btn-primary btn-sm cursor-pointer page-navigation-buttons"
   ng-click=""
-  ng-disabled=""><i class="glyphicon glyphicon-step-forward"></i></button>
+  ng-disabled="tgTablePageNumber.isRightIndicatorDisabled()"><i class="glyphicon glyphicon-step-forward"></i></button>
   <!-- right extreme play navigation button -->
   </section>
 

@@ -13,11 +13,11 @@
 
     //inject dependencies
 
-    tgTablePageNumber.$inject = ["tgTableGridHelpers","tgTablePageNumberHelpers"];
+    tgTablePageNumber.$inject = ["tgTableGridHelpers","tgTablePageNumberHelpers","$timeout"];
 
     //constructor:tgtablePageNumber
 
-    function tgTablePageNumber(tgTableGridHelpers,tgTablePageNumberHelpers){
+    function tgTablePageNumber(tgTableGridHelpers,tgTablePageNumberHelpers,$timeout){
 
       //controller:tgTablePageNumberController
 
@@ -30,6 +30,7 @@
             tgTablePageNumberControllerSelf.tgTableMaxPageSize = null;
             tgTablePageNumberControllerSelf.gridDataCount = null;
             tgTablePageNumberControllerSelf.refreshOnPageSizeChange=true;
+
 
             tgTablePageNumberControllerSelf.pageNumberConfig = {'pageSize':false,'pageLimitDefault':9,'currentPage':1};
 
@@ -58,16 +59,14 @@
 
             };
 
-          tgTablePainationPageChangeEventunBind = $scope.$on('tgPaginationPageChange',function(){
-              tgTablePageNumberControllerSelf.refreshOnPageSizeChange = false;
-              $timeout(function(){
-                  tgTablePageNumberControllerSelf.refreshOnPageSizeChange = true;
-              },0);
-            });
+
 
 
             //kickoff actions for page numbers
-            tgTablePageNumberControllerSelf.initPageNumberActions = function(gridDataCount,defaultPageSize){
+            tgTablePageNumberControllerSelf.initPageNumberActions = function(gridDataCount,defaultPageSize,isEventHappened){
+
+
+
 
               tgTablePageNumberControllerSelf.gridDataCount = gridDataCount;
               tgTablePageNumberControllerSelf.tgTableMaxPageSize = Math.round(gridDataCount/defaultPageSize);
@@ -79,7 +78,20 @@
                 tgTablePageNumberControllerSelf.tgTableMaxPageSize+=1;
               }
               tgTablePageNumberControllerSelf.isLeftIndicatorDisabled();
+              tgTablePageNumberControllerSelf.pageNumberConfig.currentPage = 1;
               tgTablePageNumberControllerSelf.pageNumberConfig.pageSize = !tgTablePageNumberControllerSelf.pageNumberConfig.pageSize;
+
+
+              if(isEventHappened){
+                    tgTablePageNumberControllerSelf.refreshOnPageSizeChange = false;
+                $timeout(function(){
+                  tgTablePageNumberControllerSelf.refreshOnPageSizeChange = true;
+                  tgTablePageNumberControllerSelf.pageNumberConfig.pageSize = !tgTablePageNumberControllerSelf.pageNumberConfig.pageSize;
+
+                },0);
+              }
+
+
             };
 
             tgTablePageNumberControllerSelf.changePageAction = function(element){
@@ -107,18 +119,23 @@
                 return prevNextActionConfig.disabledAction.call(null,disabeldConfig);
             };
 
+            tgTablePageNumberControllerSelf.isRightIndicatorDisabled = function(){
+              var disabeldConfig = {
+                right:true,
+                value:tgTablePageNumberControllerSelf.pageNumberConfig.currentPage
+              };
+
+              return prevNextActionConfig.disabledAction.call(null,disabeldConfig);
+            };
+
             tgTablePageNumberControllerSelf.previousAction = function(){
 
                 var pagePrev = {'action':'prev'};
                 if(tgTablePageNumberControllerSelf.pageNumberConfig.currentPage >= 1){
                      if(tgTablePageNumberControllerSelf.pageNumberConfig.currentPage === 1)
                               return;
-
                     prevNextActionConfig.action.call(pagePrev);
                 }
-
-
-
             };
 
             tgTablePageNumberControllerSelf.nextAction = function(){
@@ -145,7 +162,7 @@
                 if(timer){
                   timer.cancel();
                 }
-                tgTablePainationPageChangeEventunBind();
+
             });
       };
 
@@ -154,9 +171,24 @@
 
         pre:function(scope,element,attrs,controllers){
           var tgTablePaginationController = controllers[0],
-              tgTablePageNumberController = controllers[1];
+              tgTablePageNumberController = controllers[1],
+              tgTablePainationPageChangeEventunBind = null;
+
+
+
           tgTablePageNumberController.initPageNumberActions(tgTablePaginationController.getGridDataCount(),tgTablePaginationController.getDefaultPageSize());
+
+          tgTablePainationPageChangeEventunBind = scope.$on('tgPaginationPageChange',function(){
+              $timeout(function(){
+                  tgTablePageNumberController.initPageNumberActions(tgTablePaginationController.getGridDataCount(),tgTablePaginationController.getDefaultPageSize(),true);
+              },0);
+            });
+
+            scope.$on('$destroy',function(){
+              tgTablePainationPageChangeEventunBind();
+            });
         }
+
       };
 
 

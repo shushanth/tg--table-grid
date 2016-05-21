@@ -103,6 +103,8 @@ body .footer-main {
     body .footer-main .page-size-pagination-main .pagination li .page-button-activate {
       color: #fff;
       background: #428bca; }
+    body .footer-main .page-size-pagination-main .pagination li .border-right-onePx {
+      border-right: 1px solid #ddd; }
     body .footer-main .page-size-pagination-main .pagination .page-button-dimension {
       width: 30px;
       height: 30px; }
