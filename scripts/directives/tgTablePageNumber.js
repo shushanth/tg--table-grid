@@ -39,12 +39,30 @@
             };
 
             var prevNextActionConfig = {
-                action:function(){
-                  var pageActionNumber = (this.action === 'prev')? tgTablePageNumberControllerSelf.pageNumberConfig.currentPage-1 :tgTablePageNumberControllerSelf.pageNumberConfig.currentPage+1;
-                  tgTablePageNumberHelpers.activatePageButton(pageActionNumber);
-                  emitEvent('dataUpdateOnPageNumberAction',pageActionNumber);
-                  tgTablePageNumberControllerSelf.pageNumberConfig.currentPage = pageActionNumber;
 
+               commonActivate : function(pageActivatedNumber){
+                 tgTablePageNumberHelpers.activatePageButton(pageActivatedNumber);
+                 emitEvent('dataUpdateOnPageNumberAction',pageActivatedNumber);
+                 tgTablePageNumberControllerSelf.pageNumberConfig.currentPage = pageActivatedNumber;
+
+               },
+
+                go2FirstPage : function(){
+                  var pageActionNumber = tgTablePageNumberControllerSelf.pageNumberConfig.currentPage = 1;
+                  prevNextActionConfig.commonActivate(pageActionNumber);
+                },
+
+                go2LastPage : function(){
+                  var pageActionNumber = tgTablePageNumberControllerSelf.pageNumberConfig.currentPage=tgTablePageNumberControllerSelf.tgTableMaxPageSize;
+                  prevNextActionConfig.commonActivate(pageActionNumber);
+                },
+
+                nextPrevAction:function(){
+                  var pageActionNumber = (this.action === 'prev')? tgTablePageNumberControllerSelf.pageNumberConfig.currentPage-1 :tgTablePageNumberControllerSelf.pageNumberConfig.currentPage+1;
+                  // tgTablePageNumberHelpers.activatePageButton(pageActionNumber);
+                  // emitEvent('dataUpdateOnPageNumberAction',pageActionNumber);
+                  // tgTablePageNumberControllerSelf.pageNumberConfig.currentPage = pageActionNumber;
+                  prevNextActionConfig.commonActivate(pageActionNumber);
                 },
                 disabledAction:function(options){
                   var direction = options;
@@ -84,7 +102,7 @@
 
               if(isEventHappened){
                     tgTablePageNumberControllerSelf.refreshOnPageSizeChange = false;
-                $timeout(function(){
+                timer = $timeout(function(){
                   tgTablePageNumberControllerSelf.refreshOnPageSizeChange = true;
                   tgTablePageNumberControllerSelf.pageNumberConfig.pageSize = !tgTablePageNumberControllerSelf.pageNumberConfig.pageSize;
 
@@ -107,6 +125,8 @@
                 emitEvent('dataUpdateOnPageNumberAction',pageNumber);
 
             };
+
+
 
 
             //check fo icon disabled
@@ -134,33 +154,42 @@
                 if(tgTablePageNumberControllerSelf.pageNumberConfig.currentPage >= 1){
                      if(tgTablePageNumberControllerSelf.pageNumberConfig.currentPage === 1)
                               return;
-                    prevNextActionConfig.action.call(pagePrev);
+                    prevNextActionConfig.nextPrevAction.call(pagePrev);
                 }
             };
 
             tgTablePageNumberControllerSelf.nextAction = function(){
               var pagePrev = {'action':'next'};
               var pageMiddleNumber = tgTablePageNumberControllerSelf.tgTablePageNumbers.length/2;
-              prevNextActionConfig.action.call(pagePrev);
+              prevNextActionConfig.nextPrevAction.call(pagePrev);
 
 
               if(tgTablePageNumberControllerSelf.pageNumberConfig.currentPage < tgTablePageNumberControllerSelf.tgTableMaxPageSize && tgTablePageNumberControllerSelf.pageNumberConfig.currentPage > pageMiddleNumber){
                 tgTablePageNumberControllerSelf.tgTablePageNumbers.shift();
                 tgTablePageNumberControllerSelf.tgTablePageNumbers.push(tgTablePageNumberControllerSelf.tgTablePageNumbers[tgTablePageNumberControllerSelf.tgTablePageNumbers.length-1]+1);
-                $timeout(function(){
+                timer = $timeout(function(){
                   tgTablePageNumberHelpers.removeActivatedClass(0);
                 },0,false);
               }
 
             };
 
+            //go to first page on click on exteme previous button
 
+            tgTablePageNumberControllerSelf.go2FirstPage = function(){
+                prevNextActionConfig.go2FirstPage.call();
+            };
+
+            //go to last page on click on exteme next button
+            tgTablePageNumberControllerSelf.go2LastPage = function(){
+                prevNextActionConfig.go2LastPage();
+            };
 
 
 
             $scope.$on('destroy',function(){
                 if(timer){
-                  timer.cancel();
+                  $timeout.cancel(timer);
                 }
 
             });

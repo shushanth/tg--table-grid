@@ -52,7 +52,7 @@
 
         //clear search text
         tgTableInputFilterSelf.clearSearchData = function(){
-          tgTableInputFilterSelf.searchData = null;
+          tgTableInputFilterSelf.searchData = '';
           tgTableInputFilterSelf.searchGridData();
         };
 

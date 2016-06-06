@@ -8,7 +8,7 @@
 
      <section class="col-sm-4 padding-0">
        <select  class="width-100" name="" ng-model="tgTablePagination.paginationConfig.defaultPageSize"
-             ng-change="tgTablePagination.pageSizeChangeAction()" >
+             ng-change="tgTablePagination.pageSizeChangeAction()">
            <option ng-repeat="pageSize in tgTablePagination.paginationConfig.pageSizes"
              ng-disabled="tgTablePagination.checkDisabledState(pageSize,$last)">
                  {{::pageSize}}

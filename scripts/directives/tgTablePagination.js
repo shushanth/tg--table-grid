@@ -16,7 +16,7 @@
  //constructor:tgTablePagination
    function tgTablePagination(){
       //controller
-      var tgTablePaginationController = function($scope){
+      var tgTablePaginationController = function($scope,$timeout){
 
         var tgTablePaginationSelf = this;
         var tgTableGridDataCount = null;
@@ -27,6 +27,7 @@
         tgTablePaginationSelf.paginationConfig = {};
 
         tgTablePaginationSelf.setPageSize = function(pageSizes,dataCount){
+
           tgTablePaginationSelf.paginationConfig.defaultPageSize = pageSizes[0];
           //use service here for sort
             tgTablePaginationSelf.paginationConfig.pageSizes = pageSizes.sort(function(a,b){
@@ -60,6 +61,13 @@
             return tgTablePaginationSelf.paginationConfig.defaultPageSize;
         };
 
+        // remove this code when ngOptions is used (bug on ngular upgrade 1.4.8  upgrade to use ngOptions)
+        $timeout(function(){
+          angular.element('option')[0].remove();
+          $scope.$digest();
+        },0);
+
+
       };
 
       //link:tgTablePaginationLink
@@ -77,7 +85,7 @@
        restrcit:'E',
        replace:true,
        require:['^tgTableFooter','tgTablePagination'],
-       controller:['$scope',tgTablePaginationController],
+       controller:['$scope','$timeout',tgTablePaginationController],
        controllerAs:'tgTablePagination',
        link:tgTablePaginationLink,
        templateUrl:'/views/templates/tgTablePagination.html'
